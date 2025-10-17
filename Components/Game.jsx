@@ -97,10 +97,15 @@ export default function Game()
                 </div>
             </div>
             <div className="btn-container">
+            <div className="upgrade">
                 <small>Cost: {cost[0]}</small>
-                <button onClick={Double}> x2 </button>
+                <button onClick={Double}>x2</button>
+            </div>
+
+            <div className="upgrade">
                 <small>Cost: {cost[1]}</small>
-                <button onClick={BuyAutoRate}> + {autoRate + 1} every second </button>
+                <button onClick={BuyAutoRate}>+ {autoRate + 1} every second</button>
+            </div>
             </div>
         </>
     );
