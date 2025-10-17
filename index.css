@@ -1,12 +1,37 @@
 /*A*/
-.add-btn
+.add-btn button 
 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
+  background-color: #3b3d46;        
+  color: #f5f5f5;
+  border: 1px solid #777;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.add-btn button:hover 
+{
+  background-color: #4a4c56;
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.add-btn button:active 
+{
+  transform: scale(1);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
 }
 /*B*/
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body
 {
     background-color: #1e1f25;
@@ -39,14 +64,17 @@ button
 /*C*/
 /*D*/
 /*E*/
-.error-div
-{
-    background-color: rgb(119, 55, 55);
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-    border-radius: 10px;
-    margin-top: 10px;
+.error-div {
+  background-color: #91413f;              
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.25); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .error-container-div
@@ -62,6 +90,18 @@ button
     top: 250px; 
 }
 /*F*/
+.footer-text
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    font-size: medium;
+    font-weight: lighter;
+    color:#f5f5f5;
+    gap: 10px;
+    margin-top: 250px;
+}
 /*G*/
 /*H*/
 h1
@@ -117,6 +157,11 @@ p
 }
 /*Q*/
 /*R*/
+.remove-padding
+{
+    padding: 0;
+    margin: 0;
+}
 /*S*/
 small
 {

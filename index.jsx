@@ -9,7 +9,8 @@ root.render
     <Header />
         <div className="whole-container">
             <Game />
-            <Footer />
+            <Footer/>
         </div>
+    
     </>
 )
