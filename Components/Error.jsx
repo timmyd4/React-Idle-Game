@@ -1,6 +1,11 @@
 export default function Error()
 {
     return(
-        <h1>Error</h1>
+        <div className="error-container-div">
+            <div className="error-div">
+                <h2>❗Error❌</h2>
+                <small>Not Enough Points</small>
+            </div>
+        </div>
     )
 }

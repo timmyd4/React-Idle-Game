@@ -1,5 +1,7 @@
 import React from "react";
 import {useEffect} from "react";
+import Error from "./Error.jsx";
+
 export default function Game()
 {
     const [obj, setObj] = React.useState({
@@ -11,6 +13,8 @@ export default function Game()
 
     const [cost, setCost] = React.useState([10, 20]);
 
+    const [showError, setShowError] = React.useState(false);
+
     function AddClick()
     {
         setObj(prev => ({
@@ -19,9 +23,19 @@ export default function Game()
         }));
     }
 
+    function showTempError()
+    {
+        setShowError(true);
+        setTimeout(() => setShowError(false), 2000); // hide after 2 seconds
+    }
+
     function Double()
     {
-        if(obj.additive < cost[0]) return;
+        if(obj.additive < cost[0])
+        {
+            showTempError();
+            return;
+        } 
         setObj(prev => ({
             ...prev,
             additive: prev.additive - cost[0],
@@ -32,7 +46,11 @@ export default function Game()
 
     function BuyAutoRate()
     {
-        if(obj.additive < cost[1]) return;
+        if(obj.additive < cost[1])
+        {
+            showTempError();
+            return;
+        } 
 
         setObj(prev => ({
             ...prev,
@@ -58,6 +76,7 @@ export default function Game()
 
     return(
         <>
+            {showError && <Error/>}
             <div className="add-btn">
                 <button onClick={AddClick}> + {obj.multiplier} </button>
             </div>
