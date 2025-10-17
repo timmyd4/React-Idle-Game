@@ -9,6 +9,8 @@ export default function Game()
 
     const [autoRate, setAutoRate] = React.useState(0);
 
+    const [cost, setCost] = React.useState([10, 20]);
+
     function AddClick()
     {
         setObj(prev => ({
@@ -19,10 +21,26 @@ export default function Game()
 
     function Double()
     {
+        if(obj.additive < cost[0]) return;
         setObj(prev => ({
             ...prev,
+            additive: prev.additive - cost[0],
             multiplier: prev.multiplier * 2
         }));
+        setCost(prev => [Math.floor(prev[0] * 2), prev[1]]);
+    }
+
+    function BuyAutoRate()
+    {
+        if(obj.additive < cost[1]) return;
+
+        setObj(prev => ({
+            ...prev,
+            additive: prev.additive - cost[1]
+        }))
+
+        setAutoRate(prev => prev + 1)
+        setCost(prev => [prev[0], Math.floor(prev[1] * 2)]);
     }
 
     useEffect(() => {
@@ -60,8 +78,10 @@ export default function Game()
                 </div>
             </div>
             <div className="btn-container">
+                <small>Cost: {cost[0]}</small>
                 <button onClick={Double}> x2 </button>
-                <button onClick={() => setAutoRate(prev => prev + 1)}> + {autoRate + 1} every second </button>
+                <small>Cost: {cost[1]}</small>
+                <button onClick={BuyAutoRate}> + {autoRate + 1} every second </button>
             </div>
         </>
     );
