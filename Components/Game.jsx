@@ -1,6 +1,9 @@
 import React from "react";
 import {useEffect} from "react";
 import Error from "./Error.jsx";
+import AddClick from "./gameComponents/AddClick.jsx";
+import Double from "./gameComponents/Double.jsx";
+import BuyAutoRate from "./gameComponents/BuyAutoRate.jsx";
 
 export default function Game()
 {
@@ -15,50 +18,10 @@ export default function Game()
 
     const [showError, setShowError] = React.useState(false);
 
-    function AddClick()
-    {
-        setObj(prev => ({
-            ...prev,
-            additive: prev.additive + prev.multiplier
-        }));
-    }
-
     function showTempError()
     {
         setShowError(true);
         setTimeout(() => setShowError(false), 2000); // hide after 2 seconds
-    }
-
-    function Double()
-    {
-        if(obj.additive < cost[0])
-        {
-            showTempError();
-            return;
-        } 
-        setObj(prev => ({
-            ...prev,
-            additive: prev.additive - cost[0],
-            multiplier: prev.multiplier * 2
-        }));
-        setCost(prev => [Math.floor(prev[0] * 2), prev[1]]);
-    }
-
-    function BuyAutoRate()
-    {
-        if(obj.additive < cost[1])
-        {
-            showTempError();
-            return;
-        } 
-
-        setObj(prev => ({
-            ...prev,
-            additive: prev.additive - cost[1]
-        }))
-
-        setAutoRate(prev => prev + 1)
-        setCost(prev => [prev[0], Math.floor(prev[1] * 2)]);
     }
 
     useEffect(() => {
@@ -78,7 +41,7 @@ export default function Game()
         <>
             {showError && <Error/>}
             <div className="add-btn">
-                <button onClick={AddClick}> + {obj.multiplier} </button>
+                <button onClick={() => AddClick(setObj)}> + {obj.multiplier} </button>
             </div>
             <div className="stats-container">
                 <div className="stat-box">
@@ -99,12 +62,12 @@ export default function Game()
             <div className="btn-container">
             <div className="upgrade">
                 <small>Cost: {cost[0]}</small>
-                <button onClick={Double}>x2</button>
+                <button onClick={() => Double(obj, setObj, setCost, cost, showTempError)}>x2</button>
             </div>
 
             <div className="upgrade">
                 <small>Cost: {cost[1]}</small>
-                <button onClick={BuyAutoRate}>+ {autoRate + 1} every second</button>
+                <button onClick={() => BuyAutoRate(obj, cost, showTempError, setObj, setAutoRate, setCost)}>+ {autoRate + 1} every 10 seconds</button>
             </div>
             </div>
         </>
