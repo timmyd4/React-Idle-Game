@@ -21,7 +21,7 @@ export default function Game()
     function showTempError()
     {
         setShowError(true);
-        setTimeout(() => setShowError(false), 2000); // hide after 2 seconds
+        setTimeout(() => setShowError(false), 200000); // hide after 2 seconds
     }
 
     useEffect(() => {
