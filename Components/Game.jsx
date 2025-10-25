@@ -62,12 +62,12 @@ export default function Game()
             <div className="btn-container">
             <div className="upgrade">
                 <small>Cost: {cost[0]}</small>
-                <button onClick={() => Double(obj, setObj, setCost, cost, showTempError)}>x2</button>
+                <button onClick={() => Double(obj, setObj, setCost, cost, showTempError}>x2</button>
             </div>
 
             <div className="upgrade">
                 <small>Cost: {cost[1]}</small>
-                <button onClick={() => BuyAutoRate(obj, cost, showTempError, setObj, setAutoRate, setCost)}>+ {autoRate + 1} every 10 seconds</button>
+                <button onClick={() > BuyAutoRate(obj, cost, showTempError, setObj, setAutoRate, setCost)}>+ {autoRate + 1} every 10 seconds</button>
             </div>
             </div>
         </>
